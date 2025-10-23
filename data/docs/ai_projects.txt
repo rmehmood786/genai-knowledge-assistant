@@ -1,0 +1,3 @@
+﻿SmartCo has delivered several AI projects including predictive risk modelling, chatbot systems, and document summarization.
+Its engineers specialize in Python, LangChain, and cloud platforms such as Azure AI and Databricks.
+A recent project involved deploying a generative AI assistant to improve customer onboarding.

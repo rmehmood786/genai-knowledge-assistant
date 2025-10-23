@@ -1,75 +1,121 @@
-# GenAI Knowledge Assistant
+# 🧠 GenAI Knowledge Assistant
 
-A small Retrieval-Augmented Generation (RAG) app that lets you chat with your internal knowledge using OpenAI embeddings and a local FAISS vector store. Built with Python, LangChain, and Streamlit.
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-red?logo=streamlit)
+![LangChain](https://img.shields.io/badge/Powered%20by-LangChain-forestgreen)
+![Status](https://img.shields.io/badge/Mode-Offline%20%26%20Free-success)
 
-## Features
-- Document ingestion from Markdown, PDF, and text files
-- OpenAI text-embedding-3-small embeddings + FAISS vector store
-- Retrieval QA over your private docs
-- Simple Streamlit interface
-- Dockerfile and tests
-- No data leaves your machine besides calls to OpenAI APIs
+A lightweight **retrieval-augmented generation (RAG)** app built with **LangChain**, **FAISS**, and **HuggingFace** — now fully **offline and free**.  
+This project demonstrates how to build a retrieval-based knowledge assistant using your own documents without relying on paid APIs.
 
-## Quick start
+---
 
-### 1) Create a virtual environment
+## 🚀 Features
+- ✅ **Offline / Free** – Uses `sentence-transformers` and `flan-t5-small` locally (no OpenAI key needed)
+- 🔍 **Document Search** – Indexes and retrieves contextually relevant information using FAISS
+- 💬 **Conversational Interface** – Ask natural language questions about your files
+- 🧩 **Modular Architecture** – Swap in OpenAI or HuggingFace models easily
+- 🌐 **Streamlit UI** – Simple, interactive web interface
+
+---
+
+## 📦 Installation
+
+Clone the repository and install dependencies:
+
 ```bash
+git clone https://github.com/rmehmood786/genai-knowledge-assistant.git
+cd genai-knowledge-assistant
+
 python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-```
+.venv\Scripts\Activate.ps1  # (on Windows PowerShell)
 
-### 2) Install dependencies
-```bash
 pip install -r requirements.txt
 ```
 
-### 3) Set your API key
-Create a `.env` file at the project root:
+---
+
+## 🧱 Project Structure
 ```
-OPENAI_API_KEY=sk-...
+genai-knowledge-assistant/
+│
+├── app.py                # Streamlit interface (main app)
+├── ingest.py             # Indexes local documents into FAISS
+├── config.py             # Configuration (API key, paths)
+├── data/
+│   ├── docs/             # Place your .txt/.md/.pdf documents here
+│   └── vectorstore/      # FAISS index will be stored here
+├── .env.example          # Example environment file
+└── README.md
 ```
 
-### 4) Ingest documents
-Place your Markdown, PDF, or text files under `data/docs/`, then run:
+---
+
+## ⚙️ Usage
+
+### 1. Add Your Documents
+Put any `.txt`, `.md`, or `.pdf` files in `data/docs/`.
+
+### 2. Create the FAISS Vector Store
 ```bash
 python ingest.py
 ```
+You’ll see a message like:
+```
+Saved FAISS index to data/vectorstore with 4 chunks.
+```
 
-### 5) Run the app
+### 3. Run the Streamlit App
 ```bash
 streamlit run app.py
 ```
 
-Open http://localhost:8501 and ask questions about your docs.
+Then open your browser at:  
+🔗 `http://localhost:8501`
 
-## Project structure
+### 4. Ask Questions
+Example prompts:
+- “What does SmartCo Consulting do?”
+- “Which technologies are mentioned in my documents?”
+- “Summarise the document about AI ethics.”
+
+---
+
+## 🧠 Models Used
+- **Embeddings:** `sentence-transformers/all-MiniLM-L6-v2`
+- **LLM (offline):** `google/flan-t5-small`
+- *(Optional)* You can still switch to OpenAI models by unchecking “Use free local LLM” in the sidebar.
+
+---
+
+## 💡 Future Enhancements
+- Add document upload support directly in the UI
+- Include context preview under each answer
+- Support PDF → text conversion
+- Deploy via Streamlit Cloud or HuggingFace Spaces
+
+---
+
+## 👤 Author
+**Rashid Mehmood**  
+📧 [rashidmehmood5914@gmail.com](mailto:rashidmehmood5914@gmail.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/rashid-mehmood-aimachinelearningengineer/) | [GitHub](https://github.com/rmehmood786)
+
+---
+
+## 🧩 Git Commands to Push Updates
+
+From inside your project folder:
+
+```powershell
+cd "C:\Users\Rashid Mehmood\Downloads\genai-knowledge-assistant\genai-knowledge-assistant"
+.venv\Scripts\Activate.ps1
+
+git add .
+git commit -m "update: fully offline version using HuggingFace + Flan-T5 with badges"
+git branch -M main
+git remote set-url origin https://github.com/rmehmood786/genai-knowledge-assistant.git
+git push -u origin main
 ```
-genai-knowledge-assistant/
-├─ app.py                 # Streamlit UI for chat
-├─ ingest.py              # Build the FAISS vector store from docs
-├─ config.py              # Settings and helpers
-├─ requirements.txt
-├─ README.md
-├─ .env.example
-├─ .gitignore
-├─ data/
-│  ├─ docs/               # Put your source documents here
-│  └─ vectorstore/        # Persisted FAISS index
-├─ tests/
-│  └─ test_ingest.py
-└─ Dockerfile
-```
 
-## Docker
-```bash
-docker build -t genai-knowledge-assistant .
-docker run -p 8501:8501 --env OPENAI_API_KEY=$OPENAI_API_KEY genai-knowledge-assistant
-```
-
-## Notes
-- This demo uses `text-embedding-3-small` for cost and speed. You can switch to `text-embedding-3-large` in `ingest.py` if you need higher quality.
-- For PDFs we use unstructured loaders via LangChain; if you have issues on your platform, convert PDFs to text or Markdown for best results.
-- The vector store is local under `data/vectorstore/`.
-
-## Licence
-MIT
+> ✅ **Note:** Ensure `.env` is in your `.gitignore` so your local API keys remain private.

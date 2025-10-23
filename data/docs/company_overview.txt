@@ -1,0 +1,4 @@
+﻿SmartCo Consulting is a UK-based technology consultancy.
+It helps financial institutions and enterprises implement AI solutions responsibly.
+The company focuses on data pipelines, generative AI, and intelligent automation.
+SmartCo delivers advisory and engineering services for clients in the banking, insurance, and retail sectors.

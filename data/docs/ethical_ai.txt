@@ -1,0 +1,3 @@
+﻿SmartCo promotes the use of ethical and transparent AI.
+It develops explainable models and ensures that clients comply with regulatory frameworks such as GDPR.
+The company conducts internal audits and model fairness assessments as part of every engagement.
