@@ -5,7 +5,7 @@
 ![LangChain](https://img.shields.io/badge/Powered%20by-LangChain-forestgreen)
 ![Status](https://img.shields.io/badge/Mode-Offline%20%26%20Free-success)
 
-A lightweight **retrieval-augmented generation (RAG)** app built with **LangChain**, **FAISS**, and **HuggingFace** — now fully **offline and free**.  
+A lightweight **retrieval-augmented generation (RAG)** app built with **LangChain**, **FAISS**, and **HuggingFace** (can be used fully **offline and free** for experimental tasks if don't want to use paid openAI credits).  
 This project demonstrates how to build a retrieval-based knowledge assistant using your own documents without relying on paid APIs.
 
 ---
